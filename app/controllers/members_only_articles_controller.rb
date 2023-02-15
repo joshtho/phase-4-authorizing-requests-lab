@@ -3,6 +3,7 @@ class MembersOnlyArticlesController < ApplicationController
 
   def index
     articles = Article.where(is_member_only: true).includes(:user).order(created_at: :desc)
+    
     render json: articles, each_serializer: ArticleListSerializer
   end
 
